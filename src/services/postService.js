@@ -12,4 +12,27 @@ const feed = async () => {
     
 }
 
-export {feed}
+const latest = async () => {
+    try {
+        const res = await fetch(`${BASE_URL}/recent-posts`, {
+            headers: {Authorization : `Bearer ${localStorage.getItem('token')}`}
+        })
+        return res.jason()    
+    } catch (error) {
+        console.log(error)
+    }
+    
+}
+
+const showPost = async (postID) => {
+    try {
+        const res = await fetch(`${BASE_URL}/${postID}`, {
+            headers: {Authorization : `Bearer ${localStorage.getItem('token')}`}
+        })
+        return res.jason()    
+    } catch (error) {
+        console.log(error)
+    }
+} 
+
+export {feed, latest, showPost}
