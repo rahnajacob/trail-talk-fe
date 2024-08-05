@@ -8,9 +8,10 @@ import SearchBar from './components/SearchBar/SearchBar'
 import ShowPost from './components/ShowPost/ShowPost'
 import SignIn from './components/SignIn/SignIn'
 import SignUp from './components/SignUp/SignUp'
+import LandingPage from './components/LandingPage/LandingPage'
 
 const App = () => {
-  return <h1>Hello world!</h1>
+  return <LandingPage />
 }
 
 export default App

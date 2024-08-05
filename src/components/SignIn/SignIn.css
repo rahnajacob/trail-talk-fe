@@ -1,0 +1,14 @@
+.container-si{
+    background-color: rgb(169, 169, 185);
+}
+.form-si{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-si div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

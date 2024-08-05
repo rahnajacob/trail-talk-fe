@@ -1,9 +1,73 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import './SignIn.css'
 
 const SignIn = () => {
+    const navigate = useNavigate()
+    const [eMessage, setEMessage] = useState([''])
+    const [formData, setFormData] = useState({
+        username: '',
+        password: '',
+    })
+
+    const updateMessage = (message) => {
+        setEMessage(message)
+    }
+
+    const handleChange = (event) => {
+        updateMessage('')
+        setFormData({ ...formData, [event.target.name]: event.target.value })
+    }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        try {
+           //auth service 
+        } catch (error) {
+            updateMessage(error.message)
+        }
+    }
+
     return (
-        <p>Sign In form</p>
+        <><div className='container-si'>
+            <form className='form-si'>
+                <h1>Log In</h1>
+                <div>
+                    <label htmlFor="username">Username:</label>
+                    <input
+                        type="text"
+                        autoComplete="off"
+                        id="username"
+                        value={formData.username}
+                        name="username"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="password">Password:</label>
+                    <input
+                        type="password"
+                        autoComplete="off"
+                        id="password"
+                        value={formData.password}
+                        name="password"
+                        onChange={handleChange}
+                    />
+                </div>
+                <p>{eMessage}</p>
+                <div>
+                    <button>Log In</button>
+                </div>
+                <div>
+                    <p>Don't have an account?</p>
+                    <Link to="/sign-up">
+                        <button>Sign Up</button>
+                    </Link>
+                </div>
+
+            </form>
+            </div>
+        </>
     )
 }
 
