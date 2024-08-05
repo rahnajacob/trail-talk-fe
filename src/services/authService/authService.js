@@ -11,7 +11,7 @@ const signUp = async (formData) => { //depends on sign up form
     try {
         const res = await fetch(`${BACKEND_URL}/users/sign-up`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application.json' },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
         })
         const resBody = await res.json()
@@ -27,7 +27,7 @@ const signIn = async (user) => { //where user is dependant on what the state is 
     try {
         const res = await fetch(`${BACKEND_URL}/users/sign-in`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application.json' },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(user)
         })
         const resBody = await res.json()

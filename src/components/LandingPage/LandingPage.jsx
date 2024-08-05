@@ -1,16 +1,16 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import SignIn from '../SignIn/SignIn'
 import SignUp from '../SignUp/SignUp'
+import { useEffect } from 'react'
 
 const LandingPage = () => {
-    return (<>
+    const navigate = useNavigate()
     
-        <div>logo</div>
-<SignUp />
-<SignIn />
-
-        </>
-    )
+    useEffect(()=>{
+        navigate('/sign-in')
+    }, [])
+    
+    return 
 }
 
 export default LandingPage

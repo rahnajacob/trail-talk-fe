@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './SignIn.css'
+import * as authService from '../../services/authService/authService.js'
 
-const SignIn = () => {
+const SignIn = ({ setUser }) => {
     const navigate = useNavigate()
     const [eMessage, setEMessage] = useState([''])
     const [formData, setFormData] = useState({
@@ -22,7 +23,10 @@ const SignIn = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
-           //auth service 
+            const user = await authService.signIn(formData)
+            console.log(user)
+            setUser(user)
+            // navigate('/')//choose where to navigate to when signed in
         } catch (error) {
             updateMessage(error.message)
         }
@@ -30,7 +34,7 @@ const SignIn = () => {
 
     return (
         <><div className='container-si'>
-            <form className='form-si'>
+            <form className='form-si' onSubmit={handleSubmit}>
                 <h1>Log In</h1>
                 <div>
                     <label htmlFor="username">Username:</label>
@@ -66,7 +70,7 @@ const SignIn = () => {
                 </div>
 
             </form>
-            </div>
+        </div>
         </>
     )
 }

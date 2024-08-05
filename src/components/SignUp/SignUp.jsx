@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './SignUp.css'
+import * as authService from '../../services/authService/authService.js'
 
-const SignUp = () => {
+const SignUp = ({ setUser }) => {
     const navigate = useNavigate()
     const [eMessage, setEMessage] = useState([''])
     const [formData, setFormData] = useState({
@@ -23,7 +24,9 @@ const SignUp = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
-            //auth service 
+            const user = await authService.signUp(formData)
+            setUser(user.user)
+            // navigate('/') //select forwarding after sign up/sign in
         } catch (error) {
             updateMessage(error.message)
         }
@@ -39,7 +42,7 @@ const SignUp = () => {
     return (
         <>
         <div className='container'>
-            <form className='form'>
+            <form className='form' onSubmit={handleSubmit}>
                 <h1>Sign Up</h1>
                 <div>
                     <label htmlFor="username">Username:</label>
