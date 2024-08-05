@@ -8,10 +8,29 @@ import SearchBar from './components/SearchBar/SearchBar'
 import ShowPost from './components/ShowPost/ShowPost'
 import SignIn from './components/SignIn/SignIn'
 import SignUp from './components/SignUp/SignUp'
+<<<<<<< HEAD
 import LandingPage from './components/LandingPage/LandingPage'
 
 const App = () => {
   return <LandingPage />
+=======
+import authService from './services/authService/authService'
+
+const App = () => {
+  const [user, setUser] = useState(authService.getUser())
+  const handleSignOut = () => {
+    authService.signOut()
+    setUser(null)
+  }
+  return (
+    <>
+    <NavBar />
+    <Routes>
+    
+    </Routes>
+    </>
+  )
+>>>>>>> development
 }
 
 export default App
