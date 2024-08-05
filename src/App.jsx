@@ -10,7 +10,9 @@ import SignIn from './components/SignIn/SignIn'
 import SignUp from './components/SignUp/SignUp'
 
 const App = () => {
-  return <h1>Hello world!</h1>
+  return (
+    <NavBar />
+  )
 }
 
 export default App
