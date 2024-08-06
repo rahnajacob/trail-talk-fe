@@ -35,6 +35,22 @@ const App = () => {
     if (user) fetchPosts()
   }, [user])
 
+  const handleAddPost = async (postFormData) => {
+    const newPost = await postService.createPost(postFormData)
+    setPosts([newPost, ...posts])
+  }
+
+  const handleDeletePost = async (postID) => {
+    const deletePost = await postService.deletePost(postID)
+    setPosts(hoots.filter((post) => hoot._id !== deletePost._id))
+  }
+
+  const handleUpdatePost = async (postID, postFormData) => {
+    const updatedPost = await postService.updatePost(postFormData, postID)
+    setPosts(posts.map((post) => (postID === post._id ? updatedPost : post)))
+  }
+
+
   useEffect(() => {
     const fetchMyPosts = async () => {
       const myPostData = await postService.latest()
