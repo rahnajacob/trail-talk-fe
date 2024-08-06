@@ -9,10 +9,10 @@ const Feed = (props) => {
                         <p>{post.author.username}: {post.title}</p>
                         <p>{post.body}</p>
                         <div className='feedpostimg'>
-                            {post.images.slice(0, 3).map((image) => {
+                            {post.images.slice(0, 3).map((image, index) => {
                                 return (
                                     <>
-                                        <img src={image.img} alt={image.description} />
+                                        <img src={image.img} alt={image.description} key={index}/>
                                         <small>{image.description}</small>
                                     </>
                                 )
