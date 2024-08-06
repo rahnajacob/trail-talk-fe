@@ -15,11 +15,11 @@ const signUp = async (formData) => { //depends on sign up form
             body: JSON.stringify(formData)
         })
         const resBody = await res.json()
-        if (resBody.error) {throw new Error(resBody.error)}
+        if (resBody.error) { throw new Error(resBody.error) }
         localStorage.setItem('token', resBody.token)
         return resBody
     } catch (error) {
-        throw new Error({error: error.message})
+        throw new Error({ error: error.message })
     }
 }
 
@@ -31,19 +31,19 @@ const signIn = async (user) => { //where user is dependant on what the state is 
             body: JSON.stringify(user)
         })
         const resBody = await res.json()
-        if (resBody.error) {throw new Error(resBody.error)}
+        if (resBody.error) { throw new Error(resBody.error) }
         if (resBody.token) {
-        localStorage.setItem('token', resBody.token)
-        const user = JSON.parse(atob(resBody.token.split('.')[1]))
-        return user
+            localStorage.setItem('token', resBody.token)
+            const user = JSON.parse(atob(resBody.token.split('.')[1]))
+            return user
         }
     } catch (error) {
-        throw new Error({error: error.message})
+        throw new Error({ error: error.message })
     }
 }
 
-const signOut = () =>{
+const signOut = () => {
     localStorage.removeItem('token')
 }
 
-export {signOut, signIn, signUp, getUser}
+export { signOut, signIn, signUp, getUser }
