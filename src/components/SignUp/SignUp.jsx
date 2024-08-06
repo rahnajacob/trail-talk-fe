@@ -26,7 +26,7 @@ const SignUp = ({ setUser }) => {
         try {
             const user = await authService.signUp(formData)
             setUser(user.user)
-            // navigate('/') //select forwarding after sign up/sign in
+            //navigate('/') //select forwarding after sign up/sign in
         } catch (error) {
             updateMessage(error.message)
         }

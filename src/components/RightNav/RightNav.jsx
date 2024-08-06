@@ -1,8 +1,18 @@
-import { Link } from 'react-router-dom'
 
-const RightNav = () => {
+
+const RightNav = ({myPosts}) => {
     return (
-        <p>Right navbar</p>
+        <>
+        <h1></h1>
+        {myPosts.map((post, index) => {
+            return (
+                <div key={index}>
+                    <p >{post.title}</p>
+                    <p>{post.comments.length > 0 ? post.comments.length: 'No comments yet!'}</p> 
+                </div>
+            )
+        })}
+        </>
     )
 }
 

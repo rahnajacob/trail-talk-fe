@@ -12,11 +12,14 @@ import * as authService from './services/authService/authService'
 import { Route, Routes } from 'react-router-dom'
 import LandingPage from './components/LandingPage/LandingPage'
 import * as postService from './services/postService'
+import LogOut from './components/Logout/LogOut'
+
 export const AuthedUserContext = createContext(null)
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [posts, setPosts] = useState([])
+  const [myPosts, setMyPosts] = useState([])
 
   const handleSignOut = () => {
     authService.signOut()
@@ -32,16 +35,35 @@ const App = () => {
     if (user) fetchPosts()
   }, [user])
 
+  useEffect(() => {
+    const fetchMyPosts = async () => {
+      const myPostData = await postService.latest()
+      console.log('latest posts,', fetchMyPosts)
+      setMyPosts(myPostData)
+    }
+    if (user) fetchMyPosts()
+  }, [user])
+
   return (
     <>
-      <NavBar />
-      <LandingPage />
-
-      <Routes>
-        <Route path="/sign-up" element={<SignUp setUser={setUser} />} />
-        <Route path="/sign-in" element={<SignIn setUser={setUser} />} />
-        <Route path='/posts' element={<Feed posts={posts} />} />
-      </Routes>
+      {user ? (
+        <>
+          <RightNav myPosts={myPosts} />
+          <NavBar />
+          <LogOut handleSignOut={handleSignOut} />
+          <Routes>
+            <Route path='/posts' element={<Feed posts={posts} />} />
+          </Routes>
+        </>
+      ) : (
+        <>
+          <LandingPage />
+          <Routes>
+            <Route path="/sign-up" element={<SignUp setUser={setUser} />} />
+            <Route path="/sign-in" element={<SignIn setUser={setUser} />} />
+          </Routes>
+        </>
+      )}
     </>
   )
 }
