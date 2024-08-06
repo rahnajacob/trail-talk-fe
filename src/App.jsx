@@ -25,6 +25,15 @@ const App = () => {
     authService.signOut()
     setUser(null)
   }
+  //for feed
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const postsData = await postService.feed()
+      console.log("post data:", postsData)
+      setPosts(postsData)
+    }
+    if (user) fetchPosts()
+  }, [user])
 
   const handleAddPost = async (postFormData) => {
     const newPost = await postService.createPost(postFormData)
@@ -58,6 +67,9 @@ const App = () => {
           <RightNav myPosts={myPosts} />
           <NavBar />
           <LogOut handleSignOut={handleSignOut} />
+          <Routes>
+            <Route path='/posts' element={<Feed posts={posts} />} />
+          </Routes>
         </>
       ) : (
         <>
@@ -69,8 +81,6 @@ const App = () => {
         </>
       )}
     </>
-
-
   )
 }
 
