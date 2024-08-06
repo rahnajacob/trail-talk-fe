@@ -5,7 +5,7 @@ const feed = async () => {
         const res = await fetch(`${BASE_URL}`, {
             headers: {Authorization : `Bearer ${localStorage.getItem('token')}`}
         })
-        return res.jason()    
+        return res.json()    
     } catch (error) {
         console.log(error)
     }
@@ -17,7 +17,7 @@ const latest = async () => {
         const res = await fetch(`${BASE_URL}/recent-posts`, {
             headers: {Authorization : `Bearer ${localStorage.getItem('token')}`}
         })
-        return res.jason()    
+        return res.json()    
     } catch (error) {
         console.log(error)
     }
@@ -29,7 +29,7 @@ const showPost = async (postID) => {
         const res = await fetch(`${BASE_URL}/${postID}`, {
             headers: {Authorization : `Bearer ${localStorage.getItem('token')}`}
         })
-        return res.jason()    
+        return res.json()    
     } catch (error) {
         console.log(error)
     }

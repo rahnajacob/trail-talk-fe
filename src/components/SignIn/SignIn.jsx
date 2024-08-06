@@ -26,7 +26,7 @@ const SignIn = ({ setUser }) => {
             const user = await authService.signIn(formData)
             console.log(user)
             setUser(user)
-            // navigate('/')//choose where to navigate to when signed in
+            //navigate('/')//choose where to navigate to when signed in
         } catch (error) {
             updateMessage(error.message)
         }
