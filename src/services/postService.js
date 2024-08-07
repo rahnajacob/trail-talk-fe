@@ -17,7 +17,8 @@ const latest = async () => {
         const res = await fetch(`${BASE_URL}/recent-posts`, {
             headers: {Authorization : `Bearer ${localStorage.getItem('token')}`}
         })
-        return res.json()    
+       return res.json()
+        // console.log("latest res:",res)    
     } catch (error) {
         console.log(error)
     }
@@ -26,10 +27,13 @@ const latest = async () => {
 
 const showPost = async (postID) => {
     try {
-        const res = await fetch(`${BASE_URL}/${postID}`, {
+        const res = await fetch(`${BASE_URL}/post/${postID}`, {
             headers: {Authorization : `Bearer ${localStorage.getItem('token')}`}
         })
-        return res.json()    
+        console.log("postid", postID)
+        console.log("res location", res)
+         return res.json()    
+       //console.log("res location2", res)
     } catch (error) {
         console.log(error)
     }
@@ -52,7 +56,7 @@ const createPost = async (postFormData) => {
 
 const deletePost = async (postID) => {
     try {
-        const res = await fetch(`${BASE_URL}/${postID}` , {
+        const res = await fetch(`${BASE_URL}/post/${postID}` , {
             method: 'DELETE',
             headers: {Authorization : `Bearer ${localStorage.getItem('token')}`}
         })
@@ -64,7 +68,7 @@ const deletePost = async (postID) => {
 
 const updatePost = async (postFormData, postID) => {
     try {
-        const res = await fetch(`${BASE_URL}/${postID}` , {
+        const res = await fetch(`${BASE_URL}/post/${postID}` , {
             method: 'PUT',
             headers: {Authorization : `Bearer ${localStorage.getItem('token')}`, 'Content-Type': 'application/json'},
             body: JSON.stringify(postFormData)

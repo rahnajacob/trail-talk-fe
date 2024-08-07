@@ -65,28 +65,30 @@ const App = () => {
 
   return (
     <>
-      {user ? (
-        <>
-          <RightNav myPosts={myPosts} />
-          <NavBar />
-          <LogOut handleSignOut={handleSignOut} />
-          <Carousel />
-          <Routes>
-            <Route path='/posts' element={<Feed posts={posts} />} />
-            <Route path='/posts/post/:postID' element={<ShowPost handleDeletePost={handleDeletePost}/>}/>
-            <Route path='/posts/post' element={<CreateUpdatePost handleAddPost={handleAddPost}/>}/>
-            <Route path='/posts/post/:postID' element={<CreateUpdatePost handleUpdatePost={handleUpdatePost}/>}/>
-          </Routes>
-        </>
-      ) : (
-        <>
-          <LandingPage />
-          <Routes>
-            <Route path='/sign-up' element={<SignUp setUser={setUser} />} />
-            <Route path='/sign-in' element={<SignIn setUser={setUser} />} />
-          </Routes>
-        </>
-      )}
+      <AuthedUserContext.Provider value={user}>
+        {user ? (
+          <>
+            <RightNav myPosts={myPosts} />
+            <NavBar />
+            <LogOut handleSignOut={handleSignOut} />
+            
+            <Routes>
+              <Route path='/posts' element={<Feed posts={posts} />} />
+              <Route path='/posts/post/:postID' element={<ShowPost handleDeletePost={handleDeletePost} />} />
+              <Route path='/posts/post' element={<CreateUpdatePost handleAddPost={handleAddPost} />} />
+              <Route path='/posts/post/:postID/edit' element={<CreateUpdatePost handleUpdatePost={handleUpdatePost} />} />
+            </Routes>
+          </>
+        ) : (
+          <>
+            <LandingPage />
+            <Routes>
+              <Route path='/sign-up' element={<SignUp setUser={setUser} />} />
+              <Route path='/sign-in' element={<SignIn setUser={setUser} />} />
+            </Routes>
+          </>
+        )}
+      </AuthedUserContext.Provider>
     </>
   )
 }
