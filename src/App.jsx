@@ -78,20 +78,20 @@ const App = () => {
         <>
         <Container>
             <Row>
-              <Col xs={{span : 2, offset: 2}}></Col>
-              <Col xs={{span: 4}}> <SearchBar/> </Col>
-              <Col xs={{span : 2, offset: -2}}><LogOut handleSignOut={handleSignOut} /></Col>
+              <Col></Col>
+              <Col></Col>
+              <Col><LogOut handleSignOut={handleSignOut} /></Col>
             </Row>
             <Row>
-              <Col xs={{span : 2, offset: 2}}><NavBar /></Col>
-              <Col xs={{span: 4}}>
+              <Col><NavBar /></Col>
+              <Col>
                 <Routes>
                   <Route path='/posts' element={<Feed posts={posts} />} />
                   <Route path='/posts/post' element={<CreateUpdatePost handleAddPost={handleAddPost} />} />
                   <Route path='/posts/post/:postID' element={<CreateUpdatePost handleUpdatePost={handleUpdatePost} />} /> 
                 </Routes>
               </Col>
-              <Col xs={{span : 2, offset: -2}}><RightNav myPosts={myPosts} /></Col>
+              <Col><RightNav myPosts={myPosts} /></Col>
             </Row>
           </Container>
         </>
