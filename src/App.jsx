@@ -24,7 +24,7 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [posts, setPosts] = useState([])
   const [myPosts, setMyPosts] = useState([])
-
+  
   const navigate = useNavigate()
 
 
@@ -67,9 +67,9 @@ const App = () => {
       console.log('latest posts,', fetchMyPosts)
       setMyPosts(myPostData)
     }
-    if (user) {
+    if (user){
       fetchMyPosts()
-    }
+    } 
   }, [user])
 
   return (
