@@ -16,6 +16,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import './App.css'
 import ShowPost from './components/ShowPost/ShowPost'
+import CommentForm from './components/CommentsForm.jsx/CommentsForm'
 
 
 export const AuthedUserContext = createContext(null)
@@ -24,6 +25,7 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [posts, setPosts] = useState([])
   const [myPosts, setMyPosts] = useState([])
+  
   
   const navigate = useNavigate()
 
@@ -49,6 +51,7 @@ const App = () => {
     const newPost = await postService.createPost(postFormData)
     setPosts([newPost, ...posts])
     setMyPosts([newPost, ...posts])
+    navigate('/posts')
   }
 
   const handleDeletePost = async (postID) => {
@@ -60,8 +63,14 @@ const App = () => {
   const handleUpdatePost = async (postFormData, postID) => {
     const updatedPost = await postService.updatePost(postFormData, postID)
     setPosts(posts.map((post) => (postID === post._id ? updatedPost : post)))
+    navigate('/posts')
   }
 
+  const handleAddComment = async (commentData) => {
+    const newComment = await postService.createComment(commentData)
+    setPosts({...posts, comments: [...posts.comments, newComment]})
+    navigate('/posts')
+  }
 
   useEffect(() => {
     const fetchMyPosts = async () => {
@@ -93,6 +102,7 @@ const App = () => {
                   <Route path='/posts/post' element={<CreateUpdatePost handleAddPost={handleAddPost} />} />
                   <Route path='/posts/post/:postID' element={<ShowPost handleDeletePost={handleDeletePost} />} />
                   <Route path='/posts/post/:postID/edit' element={<CreateUpdatePost handleUpdatePost={handleUpdatePost} />} />
+                  <Route path='/posts/post/:postID/comment' element={<CommentForm  handleAddComment={handleAddComment}/>}/>
                 </Routes>
               </Col>
               <Col xs={{span: 2, offset: -1}}><RightNav myPosts={myPosts} /></Col>
