@@ -1,0 +1,35 @@
+.srch-btn {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: white;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    margin: 10px;
+} 
+.srch-btn:hover {
+    border-color: #646cff;
+}
+.srch-btn:focus,
+.srch-btn:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+.search-flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(62, 126, 107);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 20px;
+    margin-bottom: 0.5rem;
+}
+.search-flex input{
+    margin-right: 2rem;
+    border-radius: 20px;
+    width: 60%;
+}

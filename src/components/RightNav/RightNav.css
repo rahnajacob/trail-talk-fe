@@ -1,6 +1,29 @@
 .right-nav-container{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    background-color: rgb(62, 126, 107);
+    height: 100vh;
+    border-radius: 20px;
+}
+
+.right-nav-container h1{
+    text-align: center;
+}
+.right-nav-flex{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.right-nav-post{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(180, 231, 216);
+    border-radius: 20px;
+    margin-bottom: 10px;
+    padding: 5px;
 }

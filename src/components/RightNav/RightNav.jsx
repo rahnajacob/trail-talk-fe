@@ -1,4 +1,4 @@
-
+import './RightNav.css'
 
 const RightNav = ({ myPosts }) => {
     const firstThreePosts = myPosts.slice(0, 3);
@@ -7,6 +7,7 @@ const RightNav = ({ myPosts }) => {
         <> 
             <div className="right-nav-container">
                 <h1>Recent Posts</h1>
+                <div className="right-nav-flex">
                 {firstThreePosts.map((post, index) => (
                     <div key={index} className="right-nav-post">
                         <p>{post.title}</p>
@@ -14,6 +15,7 @@ const RightNav = ({ myPosts }) => {
                         <p>{post.likes.length > 0 ? post.comments.length : 'No likes yet!'}</p>
                     </div>
                 ))}
+                </div>
             </div>
         </>
     );

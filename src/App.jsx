@@ -1,11 +1,9 @@
 import { useState, createContext, useEffect } from 'react'
-import Carousel from './components/Carousel/Carousel'
 import CreateUpdatePost from './components/CreateUpdatePost/CreateUpdatePost'
 import Feed from './components/Feed/Feed'
 import NavBar from './components/NavBar/NavBar'
 import RightNav from './components/RightNav/RightNav'
 import SearchBar from './components/SearchBar/SearchBar'
-import ShowPost from './components/ShowPost/ShowPost'
 import SignIn from './components/SignIn/SignIn'
 import SignUp from './components/SignUp/SignUp'
 import * as authService from './services/authService/authService'
@@ -13,9 +11,10 @@ import { Route, Routes, useNavigate } from 'react-router-dom'
 import LandingPage from './components/LandingPage/LandingPage'
 import * as postService from './services/postService'
 import LogOut from './components/Logout/LogOut'
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import './App.css'
 
 
 export const AuthedUserContext = createContext(null)
@@ -48,6 +47,7 @@ const App = () => {
   const handleAddPost = async (postFormData) => {
     const newPost = await postService.createPost(postFormData)
     setPosts([newPost, ...posts])
+    setMyPosts([newPost, ...posts])
   }
 
   const handleDeletePost = async (postID) => {
@@ -78,20 +78,20 @@ const App = () => {
         <>
         <Container>
             <Row>
-              <Col></Col>
-              <Col></Col>
-              <Col><LogOut handleSignOut={handleSignOut} /></Col>
+              <Col xs={{span : 2, offset: 2}}></Col>
+              <Col xs={{span: 4}}> <SearchBar/> </Col>
+              <Col xs={{span : 2, offset: -2}}><LogOut handleSignOut={handleSignOut} /></Col>
             </Row>
             <Row>
-              <Col><NavBar /></Col>
-              <Col>
+              <Col xs={{span : 2, offset: 2}}><NavBar /></Col>
+              <Col xs={{span: 4}}>
                 <Routes>
                   <Route path='/posts' element={<Feed posts={posts} />} />
                   <Route path='/posts/post' element={<CreateUpdatePost handleAddPost={handleAddPost} />} />
                   <Route path='/posts/post/:postID' element={<CreateUpdatePost handleUpdatePost={handleUpdatePost} />} /> 
                 </Routes>
               </Col>
-              <Col><RightNav myPosts={myPosts} /></Col>
+              <Col xs={{span : 2, offset: -2}}><RightNav myPosts={myPosts} /></Col>
             </Row>
           </Container>
         </>

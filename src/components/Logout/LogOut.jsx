@@ -2,7 +2,9 @@ import './LogOut.css'
 
 const LogOut = ({handleSignOut}) => {
     return (
-        <button onClick={() => handleSignOut()} className="sign-out-btn">Log out</button>
+        <div className='logout-flex'>
+            <button onClick={() => handleSignOut()} className="sign-out-btn">Log out</button>
+        </div>
     )
 }
 
