@@ -26,7 +26,7 @@ const SignUp = ({ setUser }) => {
         try {
             const user = await authService.signUp(formData)
             setUser(user.user)
-            //navigate('/') //select forwarding after sign up/sign in
+            navigate('/posts') //select forwarding after sign up/sign in
         } catch (error) {
             updateMessage(error.message)
         }
@@ -41,8 +41,8 @@ const SignUp = ({ setUser }) => {
 
     return (
         <>
-        <div className='container'>
-            <form className='form' onSubmit={handleSubmit}>
+        <div className='container-su'>
+            <form className='form-su' onSubmit={handleSubmit}>
                 <h1>Sign Up</h1>
                 <div>
                     <label htmlFor="username">Username:</label>
@@ -79,12 +79,12 @@ const SignUp = ({ setUser }) => {
                 </div>
                 <p>{eMessage}</p>
                 <div>
-                    <button disabled={isFormInvalid()}>Sign Up</button>
+                    <button className='button-su'disabled={isFormInvalid()}>Sign Up</button>
                 </div>
                 <div>
-                    <p>Have an account</p>
+                    <p className='italic'>Have an account?</p>
                     <Link to="/sign-in">
-                        <button>Sign In</button>
+                        <button className='sign-in-button button-su'>Sign In</button>
                     </Link>
                 </div>
 

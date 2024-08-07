@@ -1,14 +1,45 @@
-.container{
-    background-color: beige;
+.container-su{
+    width: 220px;
+    background-color: #BFD9D1;
+    border-radius: 20px;
+    margin-top: 20%;
+    margin-left: 5%;
 }
-.form{
+.form-su{
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 5px;
 }
 
-.form div{
+.form-su div{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.sign-in-button{
+    margin-bottom: 1.5rem;    
+}
+
+.button-su {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: white;
+    cursor: pointer;
+    transition: border-color 0.25s;
+} 
+.button-su:hover {
+    border-color: #646cff;
+}
+.button-su:focus,
+.button-su:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+.italic{
+    font-style: italic;
+    font-size: smaller;
 }

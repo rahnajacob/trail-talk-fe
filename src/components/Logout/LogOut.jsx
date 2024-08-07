@@ -1,8 +1,8 @@
-
+import './LogOut.css'
 
 const LogOut = ({handleSignOut}) => {
     return (
-        <button onClick={() => handleSignOut()}>Log out</button>
+        <button onClick={() => handleSignOut()} className="sign-out-btn">Log out</button>
     )
 }
 

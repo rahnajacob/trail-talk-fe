@@ -26,16 +26,17 @@ const SignIn = ({ setUser }) => {
             const user = await authService.signIn(formData)
             console.log(user)
             setUser(user)
-            //navigate('/')//choose where to navigate to when signed in
+            navigate('/posts')
         } catch (error) {
             updateMessage(error.message)
         }
     }
 
     return (
-        <><div className='container-si'>
+        <>
+        <div className='container-si'>
             <form className='form-si' onSubmit={handleSubmit}>
-                <h1>Log In</h1>
+                <h1>Sign In</h1>
                 <div>
                     <label htmlFor="username">Username:</label>
                     <input
@@ -60,12 +61,12 @@ const SignIn = ({ setUser }) => {
                 </div>
                 <p>{eMessage}</p>
                 <div>
-                    <button>Log In</button>
+                    <button className='button-si'>Sign In</button>
                 </div>
                 <div>
-                    <p>Don't have an account?</p>
+                    <p className='italic'>Don't have an account?</p>
                     <Link to="/sign-up">
-                        <button>Sign Up</button>
+                        <button className='sign-up-button-si button-si '>Sign Up</button>
                     </Link>
                 </div>
 
