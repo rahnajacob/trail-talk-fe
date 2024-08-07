@@ -37,12 +37,14 @@ const showPost = async (postID) => {
 
 const createPost = async (postFormData) => {
     try {
-        const res = await fetch(`` , {
+        const res = await fetch(`${BASE_URL}/post` , {
             method: 'POST',
             headers: {Authorization : `Bearer ${localStorage.getItem('token')}`, 'Content-Type' : 'application/json'},
             body: JSON.stringify(postFormData)
         })
-        return res.json()   
+        const data = await res.json()
+        console.log(data)
+        return data   
     } catch (error) {
         console.log(error)
     }

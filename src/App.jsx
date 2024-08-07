@@ -36,8 +36,11 @@ const App = () => {
   }, [user])
 
   const handleAddPost = async (postFormData) => {
+    console.log(postFormData)
     const newPost = await postService.createPost(postFormData)
+    console.log('handle add', newPost)
     setPosts([newPost, ...posts])
+    console.log('handle add', posts)
   }
 
   const handleDeletePost = async (postID) => {
@@ -45,7 +48,7 @@ const App = () => {
     setPosts(posts.filter((post) => post._id !== deletePost._id))
   }
 
-  const handleUpdatePost = async (postID, postFormData) => {
+  const handleUpdatePost = async (postFormData, postID) => {
     const updatedPost = await postService.updatePost(postFormData, postID)
     setPosts(posts.map((post) => (postID === post._id ? updatedPost : post)))
   }
@@ -71,14 +74,16 @@ const App = () => {
           <Routes>
             <Route path='/posts' element={<Feed posts={posts} />} />
             <Route path='/posts/post/:postID' element={<ShowPost handleDeletePost={handleDeletePost}/>}/>
+            <Route path='/posts/post' element={<CreateUpdatePost handleAddPost={handleAddPost}/>}/>
+            <Route path='/posts/post/:postID' element={<CreateUpdatePost handleUpdatePost={handleUpdatePost}/>}/>
           </Routes>
         </>
       ) : (
         <>
           <LandingPage />
           <Routes>
-            <Route path="/sign-up" element={<SignUp setUser={setUser} />} />
-            <Route path="/sign-in" element={<SignIn setUser={setUser} />} />
+            <Route path='/sign-up' element={<SignUp setUser={setUser} />} />
+            <Route path='/sign-in' element={<SignIn setUser={setUser} />} />
           </Routes>
         </>
       )}
