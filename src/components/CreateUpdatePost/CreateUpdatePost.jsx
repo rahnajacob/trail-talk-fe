@@ -32,6 +32,7 @@ const CreateUpdatePost = ({ handleAddPost, handleUpdatePost }) => {
         if (postID) {
             ('handleup inside handle submit', formData, postID)
             handleUpdatePost(formData, postID)
+            nav('/posts')        
         } else {
             console.log('handleadd inside handle submit', formData, postID)
             handleAddPost(formData)

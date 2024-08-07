@@ -15,6 +15,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import './App.css'
+import ShowPost from './components/ShowPost/ShowPost'
 
 
 export const AuthedUserContext = createContext(null)
@@ -53,6 +54,7 @@ const App = () => {
   const handleDeletePost = async (postID) => {
     const deletePost = await postService.deletePost(postID)
     setPosts(posts.filter((post) => post._id !== deletePost._id))
+    navigate('/posts')
   }
 
   const handleUpdatePost = async (postFormData, postID) => {
@@ -74,24 +76,26 @@ const App = () => {
 
   return (
     <>
+    <AuthedUserContext.Provider value={user}>
       {user ? (
         <>
-        <Container>
+          <Container>
             <Row>
-              <Col></Col>
-              <Col></Col>
-              <Col><LogOut handleSignOut={handleSignOut} /></Col>
+              <Col xs={{span: 2, offset: 1}}></Col>
+              <Col xs={{span: 6}}><SearchBar /></Col>
+              <Col xs={{span: 2, offset: -1}}><LogOut handleSignOut={handleSignOut} /></Col>
             </Row>
             <Row>
-              <Col><NavBar /></Col>
-              <Col>
+              <Col xs={{span: 2, offset: 1}}><NavBar /></Col>
+              <Col xs={{span: 6}}>
                 <Routes>
                   <Route path='/posts' element={<Feed posts={posts} />} />
                   <Route path='/posts/post' element={<CreateUpdatePost handleAddPost={handleAddPost} />} />
-                  <Route path='/posts/post/:postID' element={<CreateUpdatePost handleUpdatePost={handleUpdatePost} />} /> 
+                  <Route path='/posts/post/:postID' element={<ShowPost handleDeletePost={handleDeletePost} />} />
+                  <Route path='/posts/post/:postID/edit' element={<CreateUpdatePost handleUpdatePost={handleUpdatePost} />} />
                 </Routes>
               </Col>
-              <Col><RightNav myPosts={myPosts} /></Col>
+              <Col xs={{span: 2, offset: -1}}><RightNav myPosts={myPosts} /></Col>
             </Row>
           </Container>
         </>
@@ -111,7 +115,8 @@ const App = () => {
           </Container>
         </>
       )}
-    </>
+    </AuthedUserContext.Provider>
+  </>
   )
 }
 
