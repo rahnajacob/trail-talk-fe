@@ -9,10 +9,14 @@ import ShowPost from './components/ShowPost/ShowPost'
 import SignIn from './components/SignIn/SignIn'
 import SignUp from './components/SignUp/SignUp'
 import * as authService from './services/authService/authService'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import LandingPage from './components/LandingPage/LandingPage'
 import * as postService from './services/postService'
 import LogOut from './components/Logout/LogOut'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 export const AuthedUserContext = createContext(null)
 
@@ -20,6 +24,9 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [posts, setPosts] = useState([])
   const [myPosts, setMyPosts] = useState([])
+  
+  const navigate = useNavigate()
+
 
   const handleSignOut = () => {
     authService.signOut()
@@ -32,15 +39,15 @@ const App = () => {
       console.log("post data:", postsData)
       setPosts(postsData)
     }
-    if (user) fetchPosts()
+    if (user) {
+      fetchPosts()
+      navigate('/posts')
+    }
   }, [user])
 
   const handleAddPost = async (postFormData) => {
-    console.log(postFormData)
     const newPost = await postService.createPost(postFormData)
-    console.log('handle add', newPost)
     setPosts([newPost, ...posts])
-    console.log('handle add', posts)
   }
 
   const handleDeletePost = async (postID) => {
@@ -60,29 +67,48 @@ const App = () => {
       console.log('latest posts,', fetchMyPosts)
       setMyPosts(myPostData)
     }
-    if (user) fetchMyPosts()
+    if (user){
+      fetchMyPosts()
+    } 
   }, [user])
 
   return (
     <>
       {user ? (
         <>
-          <RightNav myPosts={myPosts} />
-          <NavBar />
-          <LogOut handleSignOut={handleSignOut} />
-          <Routes>
-            <Route path='/posts' element={<Feed posts={posts} />} />
-            <Route path='/posts/post' element={<CreateUpdatePost handleAddPost={handleAddPost}/>}/>
-            <Route path='/posts/post/:postID' element={<CreateUpdatePost handleUpdatePost={handleUpdatePost}/>}/>
-          </Routes>
+        <Container>
+            <Row>
+              <Col></Col>
+              <Col></Col>
+              <Col><LogOut handleSignOut={handleSignOut} /></Col>
+            </Row>
+            <Row>
+              <Col><NavBar /></Col>
+              <Col>
+                <Routes>
+                  <Route path='/posts' element={<Feed posts={posts} />} />
+                  <Route path='/posts/post' element={<CreateUpdatePost handleAddPost={handleAddPost} />} />
+                  <Route path='/posts/post/:postID' element={<CreateUpdatePost handleUpdatePost={handleUpdatePost} />} /> 
+                </Routes>
+              </Col>
+              <Col><RightNav myPosts={myPosts} /></Col>
+            </Row>
+          </Container>
         </>
       ) : (
         <>
           <LandingPage />
-          <Routes>
-            <Route path='/sign-up' element={<SignUp setUser={setUser} />} />
-            <Route path='/sign-in' element={<SignIn setUser={setUser} />} />
-          </Routes>
+          <Container>
+            <Row>
+              <Col></Col>
+              <Col>
+                <Routes>
+                  <Route path='/sign-up' element={<SignUp setUser={setUser} />} />
+                  <Route path='/sign-in' element={<SignIn setUser={setUser} />} />
+                </Routes>
+              </Col>
+            </Row>
+          </Container>
         </>
       )}
     </>

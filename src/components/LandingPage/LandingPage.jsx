@@ -6,11 +6,11 @@ import { useEffect } from 'react'
 const LandingPage = () => {
     const navigate = useNavigate()
     
-    useEffect(()=>{
+    useEffect(() => {
         navigate('/sign-in')
     }, [])
     
-    return 
+    return <div className='landingpage'></div>
 }
 
 export default LandingPage
