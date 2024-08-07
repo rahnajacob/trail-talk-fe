@@ -42,7 +42,7 @@ const App = () => {
 
   const handleDeletePost = async (postID) => {
     const deletePost = await postService.deletePost(postID)
-    setPosts(hoots.filter((post) => hoot._id !== deletePost._id))
+    setPosts(posts.filter((post) => post._id !== deletePost._id))
   }
 
   const handleUpdatePost = async (postID, postFormData) => {
@@ -67,8 +67,10 @@ const App = () => {
           <RightNav myPosts={myPosts} />
           <NavBar />
           <LogOut handleSignOut={handleSignOut} />
+          <Carousel />
           <Routes>
             <Route path='/posts' element={<Feed posts={posts} />} />
+            <Route path='/posts/post/:postID' element={<ShowPost handleDeletePost={handleDeletePost}/>}/>
           </Routes>
         </>
       ) : (
