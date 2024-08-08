@@ -27,9 +27,9 @@ const CreateUpdatePost = ({ handleAddPost, handleUpdatePost }) => {
         setFormData({ ...formData, [event.target.name]: event.target.value })
     }
 
-    const handleImageUpload = (imageObject) => {
-        setFormData({...formData, images: [...formData.images, imageObject]})
-    }
+    // const handleImageUpload = (value) => {
+    //     setFormData({...formData, images: [...formData.images, value]})//value was prev set to imageObject
+    // }
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -86,7 +86,9 @@ const CreateUpdatePost = ({ handleAddPost, handleUpdatePost }) => {
                     name='images'
                     label='Attach Image'
                     images={formData.images}
-                    handleImageUpload={handleImageUpload}/>
+                    formData={formData}
+                    setFormData={setFormData}
+                    />
                 </div>
 
 
