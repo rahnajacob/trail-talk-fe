@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useParams, Link, useNavigate } from "react-router-dom"
 import * as postService from "../../services/postService"
 import './CreateUpdatePost.css'
+import ImageUploadField from "../ImageUploadField/ImageUploadField"
 
 
 const CreateUpdatePost = ({ handleAddPost, handleUpdatePost }) => {
@@ -9,7 +10,8 @@ const CreateUpdatePost = ({ handleAddPost, handleUpdatePost }) => {
         title: '',
         body: '',
         city: '',
-        country: ''
+        country: '',
+        images: []
     })
     const nav = useNavigate()
     const { postID } = useParams()
@@ -21,9 +23,12 @@ const CreateUpdatePost = ({ handleAddPost, handleUpdatePost }) => {
         }
         if (postID) fetchPost()
     }, [postID])
-
-    const handleChange = (event) => {
+     const handleChange = (event) => {
         setFormData({ ...formData, [event.target.name]: event.target.value })
+    }
+
+    const handleImageUpload = (imageObject) => {
+        setFormData({...formData, images: [...formData.images, imageObject]})
     }
 
     const handleSubmit = (event) => {
@@ -76,6 +81,13 @@ const CreateUpdatePost = ({ handleAddPost, handleUpdatePost }) => {
                     value={formData.country}
                     onChange={handleChange}
                 />
+                <div>
+                    <ImageUploadField 
+                    name='images'
+                    label='Attach Image'
+                    images={formData.images}
+                    handleImageUpload={handleImageUpload}/>
+                </div>
 
 
                 <button className='create-btn' type='submit'>

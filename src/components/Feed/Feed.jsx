@@ -6,6 +6,7 @@ const Feed = (props) => {
     // const [posts, setPosts]
     // const [hasMore, setHasMore]
     // const [page, setPage]
+    console.log("porp post", props.posts)
     return (
         <section>
             {props.posts.map((post) => (
