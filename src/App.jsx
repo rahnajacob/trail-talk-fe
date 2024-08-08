@@ -18,6 +18,7 @@ import './App.css'
 import ShowPost from './components/ShowPost/ShowPost'
 
 
+
 export const AuthedUserContext = createContext(null)
 
 const App = () => {
@@ -25,8 +26,8 @@ const App = () => {
   const [posts, setPosts] = useState([])
   const [myPosts, setMyPosts] = useState([])
   
+  
   const navigate = useNavigate()
-
 
   const handleSignOut = () => {
     authService.signOut()
@@ -45,10 +46,24 @@ const App = () => {
     }
   }, [user])
 
+  useEffect(() => {
+    const fetchInitialPosts = async () => {
+        try {
+            const data = await postService.feed();
+            setPosts(data.posts);
+        } catch (error) {
+            console.error('Error fetching initial posts:', error);
+        }
+    };
+
+    fetchInitialPosts();
+}, []);
+
   const handleAddPost = async (postFormData) => {
     const newPost = await postService.createPost(postFormData)
     setPosts([newPost, ...posts])
     setMyPosts([newPost, ...posts])
+    navigate('/posts')
   }
 
   const handleDeletePost = async (postID) => {
@@ -60,8 +75,14 @@ const App = () => {
   const handleUpdatePost = async (postFormData, postID) => {
     const updatedPost = await postService.updatePost(postFormData, postID)
     setPosts(posts.map((post) => (postID === post._id ? updatedPost : post)))
+    navigate('/posts')
   }
 
+  const handleAddComment = async (commentData) => {
+    const newComment = await postService.createComment(commentData)
+    setPosts({...posts, comments: [...posts.comments, newComment]})
+    navigate('/posts')
+  }
 
   useEffect(() => {
     const fetchMyPosts = async () => {
@@ -89,7 +110,7 @@ const App = () => {
               <Col xs={{span: 2, offset: 1}}><NavBar /></Col>
               <Col xs={{span: 6}}>
                 <Routes>
-                  <Route path='/posts' element={<Feed posts={posts} />} />
+                  <Route path='/posts' element={<Feed posts={posts} setPosts={setPosts}/>} />
                   <Route path='/posts/post' element={<CreateUpdatePost handleAddPost={handleAddPost} />} />
                   <Route path='/posts/post/:postID' element={<ShowPost handleDeletePost={handleDeletePost} />} />
                   <Route path='/posts/post/:postID/edit' element={<CreateUpdatePost handleUpdatePost={handleUpdatePost} />} />
