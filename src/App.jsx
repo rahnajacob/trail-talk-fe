@@ -16,6 +16,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import './App.css'
 import ShowPost from './components/ShowPost/ShowPost'
+import Logo from './components/Logo/Logo'
 
 
 
@@ -38,7 +39,7 @@ const App = () => {
     const fetchPosts = async () => {
       const postsData = await postService.feed()
       console.log("post data:", postsData)
-      setPosts(postsData)
+      setPosts(postsData.posts)
     }
     if (user) {
       fetchPosts()
@@ -46,18 +47,18 @@ const App = () => {
     }
   }, [user])
 
-  useEffect(() => {
-    const fetchInitialPosts = async () => {
-        try {
-            const data = await postService.feed();
-            setPosts(data.posts);
-        } catch (error) {
-            console.error('Error fetching initial posts:', error);
-        }
-    };
+//   useEffect(() => {
+//     const fetchInitialPosts = async () => {
+//         try {
+//             const data = await postService.feed();
+//             setPosts(data.posts);
+//         } catch (error) {
+//             console.error('Error :', error);
+//         }
+//     };
 
-    fetchInitialPosts();
-}, []);
+//     fetchInitialPosts();
+// }, []);
 
   const handleAddPost = async (postFormData) => {
     const newPost = await postService.createPost(postFormData)
@@ -125,7 +126,9 @@ const App = () => {
           <LandingPage />
           <Container>
             <Row>
-              <Col></Col>
+              <Col>
+                <Logo />
+              </Col>
               <Col>
                 <Routes>
                   <Route path='/sign-up' element={<SignUp setUser={setUser} />} />

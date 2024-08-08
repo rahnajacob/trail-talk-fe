@@ -1,11 +1,14 @@
 #root {
-  max-width: 1920px;
+  max-width: 3000px;
   height: 100vh;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  background-color: #d6d7ec;
-}
+  /* background-color: #BBDEFB; */
+  /* background-color: #D1C4E9; */
+  /* background-color: #B2EBF2; */
+  background-color: #EBFBF4;
+} 
 /* button {
   border-radius: 8px;
   border: 1px solid transparent;

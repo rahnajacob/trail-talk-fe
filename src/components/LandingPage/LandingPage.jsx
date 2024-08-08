@@ -10,7 +10,9 @@ const LandingPage = () => {
         navigate('/sign-in')
     }, [])
     
-    return <div className='landingpage'></div>
+    return <div className='landingpage'>
+        <img src="" alt="" />
+    </div>
 }
 
 export default LandingPage

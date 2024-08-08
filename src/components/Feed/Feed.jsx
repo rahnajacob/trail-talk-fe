@@ -4,37 +4,39 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import * as postService from '../../services/postService'
 import './Feed.css'
 
-const Feed = ({ posts }) => {
-    const [allPosts, setAllPosts] = useState(posts || []);
+const Feed = ({ posts, setPosts }) => {
+    //const [allPosts, setAllPosts] = useState(posts || []);
     const [page, setPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
 
-    useEffect(() => {
-        if (posts.length > 0) setAllPosts(posts);
-    }, [posts]);
+    // useEffect(() => {
+    //     if (posts.length > 0) setAllPosts(posts);
+    // }, [posts]);
 
     const fetchMorePosts = async () => {
         try {
-            const data = await postService.feed(page + 1, 10);
-            setAllPosts((prevPosts) => [...prevPosts, ...data.posts]);
+            const data = await postService.feed(page+1, 10);
+            setPosts((prevPosts) => [...prevPosts, ...data.posts]);
             setPage(page + 1);
             if (data.posts.length === 0) setHasMore(false);
         } catch (error) {
             console.error(error);
         }
     };
-
-    return (
+    console.log('postcount', posts.length)
+    console.log('unique posts', new Set(posts.map((post)=> post._id)).size)
+    return ( 
         <div id="scrollableFeed" className="scrollable-container">
             <InfiniteScroll
-                dataLength={allPosts.length}
+                dataLength={posts.length}
                 next={fetchMorePosts}
                 hasMore={hasMore}
                 loader={<h4>Loading...</h4>}
                 scrollableTarget="scrollableFeed"
             >
                 <section>
-                    {allPosts.map((post) => (
+                    {posts.map((post) => (
+                        <>
                         <Link key={post._id} to={`/posts/post/${post._id}`}>
                         <div className='feedpost' key={post._id}>
                             <p>{post.author.username}: {post.title}</p>
@@ -49,6 +51,8 @@ const Feed = ({ posts }) => {
                             </div>
                         </div>
                         </Link>
+                        </>
+
                     ))}
                 </section>
             </InfiniteScroll>

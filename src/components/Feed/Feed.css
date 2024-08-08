@@ -1,7 +1,8 @@
 .scrollable-container {
     height: 80vh; 
     overflow-y: auto;
-    border: 1px solid #ccc; 
+    border: 1px solid #ccc;
+    background-color: white; 
 }
 
 /* Scrollbar styles */
@@ -29,7 +30,9 @@
 }
 
 .feedpost{
-    background-color: rgb(180, 231, 216);
+    background-color: #FBF4EB;
     border-radius: 20px;
     margin: 2px 5px 0.7rem 5px;
+    display: flex;
+    flex-direction: column;
 }

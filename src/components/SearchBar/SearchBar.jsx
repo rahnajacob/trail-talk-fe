@@ -5,8 +5,8 @@ const SearchBar = () => {
     return (
         <>
             <form className="search-flex">
-                <input value='search'/>
-                <button className="srch-btn">Search</button>
+                <input value='search' readOnly/>
+                <button className="srch-btn" >Search</button>
             </form>
         </>
     )
