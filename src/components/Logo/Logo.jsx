@@ -1,9 +1,11 @@
+import './Logo.css'
+
 const Logo = () => {
     
     return <div className='landingpage'>
-        <h3>TrailTalk</h3>
+        <h2 className='name-login'>TrailTalk</h2>
         <img src="https://res.cloudinary.com/dr9aiqtjj/image/upload/v1723122252/logo_final_ex2lcn.png" alt="Logo" />
-        <p>Share Your Journey, Inspire Adventure.</p>
+        <p className="tagline-login">Share Your Journey, Inspire Adventure.</p>
     </div>
 }
 

@@ -20,11 +20,24 @@
 .logout-flex{
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: rgb(62, 126, 107);
+    justify-content: space-around;
+    background-color: #fcdbde;
     border-radius: 20px;
     margin-bottom: 0.5rem;
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 5px;
+    
 }
+
+.logout-flex div{
+    
+}
+
+.lo-profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+

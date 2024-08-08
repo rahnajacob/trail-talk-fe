@@ -103,12 +103,12 @@ const App = () => {
         <>
           <Container>
             <Row>
-              <Col xs={{span: 2, offset: 1}}></Col>
+              <Col xs={{span: 2}}></Col>
               <Col xs={{span: 6}}><SearchBar /></Col>
-              <Col xs={{span: 2, offset: -1}}><LogOut handleSignOut={handleSignOut} /></Col>
+              <Col xs={{span: 3, offset: -1}}><LogOut handleSignOut={handleSignOut} /></Col>
             </Row>
             <Row>
-              <Col xs={{span: 2, offset: 1}}><NavBar /></Col>
+              <Col xs={{span: 2 }}><NavBar /></Col>
               <Col xs={{span: 6}}>
                 <Routes>
                   <Route path='/posts' element={<Feed posts={posts} setPosts={setPosts}/>} />
@@ -117,7 +117,7 @@ const App = () => {
                   <Route path='/posts/post/:postID/edit' element={<CreateUpdatePost handleUpdatePost={handleUpdatePost} />} />
                 </Routes>
               </Col>
-              <Col xs={{span: 2, offset: -1}}><RightNav myPosts={myPosts} /></Col>
+              <Col xs={{span: 3, offset: -1}}><RightNav myPosts={myPosts} /></Col>
             </Row>
           </Container>
         </>

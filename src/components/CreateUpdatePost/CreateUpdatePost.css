@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(62, 126, 107);
+    background-color: #fcdbde;
     height: 80vh;
     border-radius: 20px;
 }
@@ -17,5 +17,5 @@
     background-color: white;
     cursor: pointer;
     transition: border-color 0.25s;
-    margin: 5px;
+    margin: 10px;
 }

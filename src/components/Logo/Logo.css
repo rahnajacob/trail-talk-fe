@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Arbutus&family=Jersey+10&family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap');
+
+.tagline-login{
+    font-family: "Permanent Marker", cursive;
+    margin-top: 0.7rem;
+    font-size: larger;
+}
+
+.name-login{
+    font-family: "Oleo Script", system-ui;
+    font-weight: bolder;
+    font-size: xx-large;
+}

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
+    background-color: #fcdbde;
     height: 80vh;
     border-radius: 20px;
 }
@@ -22,7 +22,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #FBF4EB;
+    background-color: white;
+    width: 90%;
     border-radius: 20px;
     margin-bottom: 10px;
     padding: 5px;

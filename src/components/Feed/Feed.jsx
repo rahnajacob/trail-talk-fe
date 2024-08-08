@@ -37,7 +37,7 @@ const Feed = ({ posts, setPosts }) => {
                 <section>
                     {posts.map((post) => (
                         <>
-                        <Link key={post._id} to={`/posts/post/${post._id}`}>
+                        <Link className='unstyled-link-feed' key={post._id} to={`/posts/post/${post._id}`}>
                         <div className='feedpost' key={post._id}>
                             <p>{post.author.username}: {post.title}</p>
                             <p>{post.body}</p>

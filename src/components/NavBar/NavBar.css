@@ -1,8 +1,17 @@
+.unstyled-link{
+    text-decoration: none;
+    color: inherit;
+}
+
 .nav-flex{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
-    height: 80vh;
+    justify-content: center;
+    justify-content: space-around;
+    background-color: #fcdbde;
+    height: 300px;
     border-radius: 20px;
+    opacity: 0.9;
 }
+
