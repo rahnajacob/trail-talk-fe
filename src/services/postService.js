@@ -1,17 +1,6 @@
 const BASE_URL = `${import.meta.env.VITE_EXPRESS_BACKEND_URL}/posts`
 
-// const feed = async () => {
-//     try {
-//         const res = await fetch(`${BASE_URL}`, {
-//             headers: {Authorization : `Bearer ${localStorage.getItem('token')}`}
-//         })
-//         return res.json()    
-//     } catch (error) {
-//         console.log(error)
-//     }
-    
-// }
-const feed = async (page , limit = 7) => {
+const feed = async (page = 1 , limit = 10) => {
     try {
         const res = await fetch(`${BASE_URL}?page=${page}&limit=${limit}`, {
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }

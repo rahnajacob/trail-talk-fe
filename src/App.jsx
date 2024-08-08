@@ -46,6 +46,19 @@ const App = () => {
     }
   }, [user])
 
+  useEffect(() => {
+    const fetchInitialPosts = async () => {
+        try {
+            const data = await postService.feed();
+            setPosts(data.posts);
+        } catch (error) {
+            console.error('Error fetching initial posts:', error);
+        }
+    };
+
+    fetchInitialPosts();
+}, []);
+
   const handleAddPost = async (postFormData) => {
     const newPost = await postService.createPost(postFormData)
     setPosts([newPost, ...posts])
