@@ -11,7 +11,7 @@ const BASE_URL = `${import.meta.env.VITE_EXPRESS_BACKEND_URL}/posts`
 //     }
     
 // }
-const feed = async (page = 1, limit = 5) => {
+const feed = async (page , limit = 7) => {
     try {
         const res = await fetch(`${BASE_URL}?page=${page}&limit=${limit}`, {
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }

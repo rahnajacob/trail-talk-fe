@@ -16,7 +16,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import './App.css'
 import ShowPost from './components/ShowPost/ShowPost'
-import CommentForm from './components/CommentsForm.jsx/CommentsForm'
+
 
 
 export const AuthedUserContext = createContext(null)
@@ -28,7 +28,6 @@ const App = () => {
   
   
   const navigate = useNavigate()
-
 
   const handleSignOut = () => {
     authService.signOut()
@@ -98,11 +97,10 @@ const App = () => {
               <Col xs={{span: 2, offset: 1}}><NavBar /></Col>
               <Col xs={{span: 6}}>
                 <Routes>
-                  <Route path='/posts' element={<Feed posts={posts} />} />
+                  <Route path='/posts' element={<Feed posts={posts} setPosts={setPosts}/>} />
                   <Route path='/posts/post' element={<CreateUpdatePost handleAddPost={handleAddPost} />} />
                   <Route path='/posts/post/:postID' element={<ShowPost handleDeletePost={handleDeletePost} />} />
                   <Route path='/posts/post/:postID/edit' element={<CreateUpdatePost handleUpdatePost={handleUpdatePost} />} />
-                  <Route path='/posts/post/:postID/comment' element={<CommentForm  handleAddComment={handleAddComment}/>}/>
                 </Routes>
               </Col>
               <Col xs={{span: 2, offset: -1}}><RightNav myPosts={myPosts} /></Col>

@@ -51,7 +51,7 @@ const Feed = () => {
 
     const fetchPosts = async (page) => {
         try {
-            const data = await postService.feed(page, 5); 
+            const data = await postService.feed(page, 7); 
             setPosts((prevPosts) => [...prevPosts, ...data.posts]);
             if (page >= data.totalPages) {
                 setHasMore(false);
