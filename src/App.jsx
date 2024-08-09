@@ -37,7 +37,7 @@ const App = () => {
     const fetchPosts = async () => {
       const postsData = await postService.feed()
       console.log("post data:", postsData)
-      setPosts(postsData)
+      setPosts(postsData.posts)
     }
     if (user) {
       fetchPosts()
