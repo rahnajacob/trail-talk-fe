@@ -17,6 +17,7 @@ import Col from 'react-bootstrap/Col'
 import './App.css'
 import ShowPost from './components/ShowPost/ShowPost'
 import Logo from './components/Logo/Logo'
+import Badge from './components/Badge/Badge'
 
 
 
@@ -103,7 +104,7 @@ const App = () => {
         <>
           <Container>
             <Row>
-              <Col xs={{span: 2}}></Col>
+              <Col xs={{span: 2}}><Badge /></Col>
               <Col xs={{span: 6}}><SearchBar /></Col>
               <Col xs={{span: 3, offset: -1}}><LogOut handleSignOut={handleSignOut} /></Col>
             </Row>

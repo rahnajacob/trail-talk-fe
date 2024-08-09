@@ -6,10 +6,12 @@
     font-family: "Permanent Marker", cursive;
     margin-top: 0.7rem;
     font-size: larger;
+    color: white;
 }
 
 .name-login{
     font-family: "Oleo Script", system-ui;
     font-weight: bolder;
     font-size: xx-large;
+    color: white;
 }

@@ -2,6 +2,7 @@
     height: 80vh; 
     overflow-y: auto;
     background-color: #fcdbde;
+    border-radius: 20px;
 }
 
 /* Scrollbar styles */

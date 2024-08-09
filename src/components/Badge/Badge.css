@@ -1,0 +1,8 @@
+.top-right{
+    width: auto;
+    max-height: 10vh;
+}
+
+.top-right-div{
+    overflow: hidden;
+}
