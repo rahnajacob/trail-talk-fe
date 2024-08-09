@@ -6,6 +6,7 @@ import ImageUploadField from "../ImageUploadField/ImageUploadField"
 
 
 const CreateUpdatePost = ({ handleAddPost, handleUpdatePost }) => {
+    const [uploadInProgress, setUploadInProgress] = useState(false)
     const [formData, setFormData] = useState({
         title: '',
         body: '',
@@ -88,11 +89,14 @@ const CreateUpdatePost = ({ handleAddPost, handleUpdatePost }) => {
                     images={formData.images}
                     formData={formData}
                     setFormData={setFormData}
+                    uploadInProgress={uploadInProgress}
+                    setUploadInProgress={setUploadInProgress}
+                
                     />
                 </div>
 
 
-                <button className='create-btn' type='submit'>
+                <button className='create-btn' type='submit' disabled={uploadInProgress}>
                         Submit
                 </button>
 

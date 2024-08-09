@@ -1,28 +1,39 @@
 import styles from './ImageUploadField.module.css'
+import { useState } from 'react'
+
 const uploadURL = import.meta.env.VITE_CLOUDINARY_URL
 const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET
 
-const ImageUploadField = ({ name, label, images, formData, setFormData }) => {
 
+const ImageUploadField = ({ name, label, images, formData, setFormData ,setUploadInProgress, uploadInProgress}) => {
+    
     const handleSelectImage = async (e) => {
+        setUploadInProgress(true)
+        try {
+            const files = Array.from(e.target.files)
 
-        const files = Array.from(e.target.files)
+            const data = await Promise.all(files.map(async (file) => {
+                const imageForm = new FormData()
+                imageForm.append('file', file)
+                imageForm.append('upload_preset', uploadPreset)
+                const res = await fetch(uploadURL, {
+                    method: 'POST',
+                    body: imageForm
+                })
+                return res.json() //const imageData = await res.json()
+            }))
 
-        const data = await Promise.all(files.map(async (file) => {
-            const imageForm = new FormData()
-            imageForm.append('file', file)
-            imageForm.append('upload_preset', uploadPreset)
-            const res = await fetch(uploadURL, {
-                method: 'POST',
-                body: imageForm
+            setFormData({
+                ...formData,
+                images: data.map(image => image.secure_url)
             })
-            return res.json() //const imageData = await res.json()
-        }))
+        } catch (error) {
+            console.log("upload error", error.message)
 
-        setFormData({
-            ...formData,
-            images: data.map(image => image.secure_url)
-        })
+        } finally {
+            setUploadInProgress(false)
+        }
+
     }
     // const res = await fetch(uploadURL, {
     //     method: 'POST',
