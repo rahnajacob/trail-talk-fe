@@ -28,19 +28,13 @@ const CreateUpdatePost = ({ handleAddPost, handleUpdatePost }) => {
         setFormData({ ...formData, [event.target.name]: event.target.value })
     }
 
-    // const handleImageUpload = (value) => {
-    //     setFormData({...formData, images: [...formData.images, value]})//value was prev set to imageObject
-    // }
-
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log('From Component', formData)
         if (postID) {
             ('handleup inside handle submit', formData, postID)
             handleUpdatePost(formData, postID)
             nav('/posts')        
         } else {
-            console.log('handleadd inside handle submit', formData, postID)
             handleAddPost(formData)
             nav('/posts')
         }
@@ -82,7 +76,7 @@ const CreateUpdatePost = ({ handleAddPost, handleUpdatePost }) => {
                     value={formData.country}
                     onChange={handleChange}
                 />
-                <div>
+                <div className="image-submit">
                     <ImageUploadField 
                     name='images'
                     label='Attach Image'
@@ -91,7 +85,7 @@ const CreateUpdatePost = ({ handleAddPost, handleUpdatePost }) => {
                     setFormData={setFormData}
                     uploadInProgress={uploadInProgress}
                     setUploadInProgress={setUploadInProgress}
-                
+                    style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '1.1rem' }}
                     />
                 </div>
 

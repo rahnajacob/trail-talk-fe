@@ -1,12 +1,11 @@
 import { useState } from "react"
 import Slider from "react-slick"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
-import styles from './Carousel.module.css'
-// import { FaBullseye } from "react-icons/fa";
+import './Carousel.module.css'
 
 const Carousel = ({images}) => {
     var settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 2,
@@ -15,12 +14,11 @@ const Carousel = ({images}) => {
         autoplaySpeed: 2000
     };
 
-    console.log("images carousel", images)
     const displayImages = images.map((image, i) => (
         <img src={image} alt="hhhhhhh" key={i} />
     ))
     return (
-        <section className="styles.slickslider">
+        <section className="styles.slickslider ">
             <Slider {...settings}>
                 {displayImages}
             </Slider>

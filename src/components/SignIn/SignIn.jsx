@@ -24,7 +24,6 @@ const SignIn = ({ setUser }) => {
         event.preventDefault()
         try {
             const user = await authService.signIn(formData)
-            console.log(user)
             setUser(user)
             navigate('/posts')
         } catch (error) {

@@ -5,13 +5,8 @@ import * as postService from '../../services/postService'
 import './Feed.css'
 
 const Feed = ({ posts, setPosts }) => {
-    //const [allPosts, setAllPosts] = useState(posts || []);
     const [page, setPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
-
-    // useEffect(() => {
-    //     if (posts.length > 0) setAllPosts(posts);
-    // }, [posts]);
 
     const fetchMorePosts = async () => {
         try {
@@ -23,8 +18,6 @@ const Feed = ({ posts, setPosts }) => {
             console.error(error);
         }
     };
-    console.log('postcount', posts.length)
-    console.log('unique posts', new Set(posts.map((post)=> post._id)).size)
     return ( 
         <div id="scrollableFeed" className="scrollable-container">
             <InfiniteScroll

@@ -19,3 +19,8 @@
     transition: border-color 0.25s;
     margin: 10px;
 }
+
+.image-submit{
+    display: flex;
+    flex-direction: column;
+}

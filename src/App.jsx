@@ -39,7 +39,6 @@ const App = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const postsData = await postService.feed()
-      console.log("post data:", postsData)
       setPosts(postsData.posts)
     }
     if (user) {
@@ -47,19 +46,6 @@ const App = () => {
       navigate('/posts')
     }
   }, [user])
-
-//   useEffect(() => {
-//     const fetchInitialPosts = async () => {
-//         try {
-//             const data = await postService.feed();
-//             setPosts(data.posts);
-//         } catch (error) {
-//             console.error('Error :', error);
-//         }
-//     };
-
-//     fetchInitialPosts();
-// }, []);
 
   const handleAddPost = async (postFormData) => {
     const newPost = await postService.createPost(postFormData)
@@ -89,7 +75,6 @@ const App = () => {
   useEffect(() => {
     const fetchMyPosts = async () => {
       const myPostData = await postService.latest()
-      console.log('latest posts,', fetchMyPosts)
       setMyPosts(myPostData)
     }
     if (user){
