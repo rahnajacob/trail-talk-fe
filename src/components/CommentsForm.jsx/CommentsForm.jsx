@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const CommetForm = () => {
+const CommetForm = ({handleAddComment}) => {
     const [formData, setFormData] = useState({ text : ''})
 
     const handleChange = (event) => {

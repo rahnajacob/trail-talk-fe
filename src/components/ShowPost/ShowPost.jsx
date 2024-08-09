@@ -31,7 +31,7 @@ const ShowPost = (props) => {
                 <>
                     <Link className='button' to={`/posts/post/${post._id}/edit`}>Edit Post</Link>
                     <button onClick={() => {props.handleDeletePost(postID)}}>Delete Post</button>
-                </>)}
+                </>)}                
         </section>
     )
 }

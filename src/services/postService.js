@@ -1,16 +1,16 @@
 const BASE_URL = `${import.meta.env.VITE_EXPRESS_BACKEND_URL}/posts`
 
-const feed = async () => {
+const feed = async (page = 1 , limit = 10) => {
     try {
-        const res = await fetch(`${BASE_URL}`, {
-            headers: {Authorization : `Bearer ${localStorage.getItem('token')}`}
-        })
-        return res.json()    
+        const res = await fetch(`${BASE_URL}?page=${page}&limit=${limit}`, {
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+        });
+        return res.json();
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-    
-}
+};
+
 
 const latest = async () => {
     try {
@@ -81,7 +81,7 @@ const updatePost = async (postFormData, postID) => {
 
 const createComment = async (postID, commentFormData) => {
     try {
-        const res = await fetch(`${BASE_URL}/${postID}/comment` , {
+        const res = await fetch(`${BASE_URL}/post/${postID}/comment` , {
             method: 'POST',
             headers: {Authorization : `Bearer ${localStorage.getItem('token')}`, 'Content-Type' : 'application/json'},
             body: JSON.stringify(commentFormData)

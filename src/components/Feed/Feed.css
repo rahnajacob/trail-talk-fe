@@ -1,0 +1,35 @@
+.scrollable-container {
+    height: 80vh; 
+    overflow-y: auto;
+    border: 1px solid #ccc; 
+}
+
+/* Scrollbar styles */
+.scrollable-container::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+.scrollable-container::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
+    border-radius: 10px;
+}
+
+.scrollable-container::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar thumb */
+    border-radius: 10px;
+}
+
+.scrollable-container::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar thumb on hover */
+}
+
+.feed{
+    background-color: rgb(62, 126, 107);
+    border-radius: 20px;
+}
+
+.feedpost{
+    background-color: rgb(180, 231, 216);
+    border-radius: 20px;
+    margin: 2px 5px 0.7rem 5px;
+}
