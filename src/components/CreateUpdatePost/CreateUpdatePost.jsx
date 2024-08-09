@@ -2,14 +2,17 @@ import { useState, useEffect } from "react"
 import { useParams, Link, useNavigate } from "react-router-dom"
 import * as postService from "../../services/postService"
 import './CreateUpdatePost.css'
+import ImageUploadField from "../ImageUploadField/ImageUploadField"
 
 
 const CreateUpdatePost = ({ handleAddPost, handleUpdatePost }) => {
+    const [uploadInProgress, setUploadInProgress] = useState(false)
     const [formData, setFormData] = useState({
         title: '',
         body: '',
         city: '',
-        country: ''
+        country: '',
+        images: []
     })
     const nav = useNavigate()
     const { postID } = useParams()
@@ -21,10 +24,13 @@ const CreateUpdatePost = ({ handleAddPost, handleUpdatePost }) => {
         }
         if (postID) fetchPost()
     }, [postID])
-
-    const handleChange = (event) => {
+     const handleChange = (event) => {
         setFormData({ ...formData, [event.target.name]: event.target.value })
     }
+
+    // const handleImageUpload = (value) => {
+    //     setFormData({...formData, images: [...formData.images, value]})//value was prev set to imageObject
+    // }
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -76,9 +82,21 @@ const CreateUpdatePost = ({ handleAddPost, handleUpdatePost }) => {
                     value={formData.country}
                     onChange={handleChange}
                 />
+                <div>
+                    <ImageUploadField 
+                    name='images'
+                    label='Attach Image'
+                    images={formData.images}
+                    formData={formData}
+                    setFormData={setFormData}
+                    uploadInProgress={uploadInProgress}
+                    setUploadInProgress={setUploadInProgress}
+                
+                    />
+                </div>
 
 
-                <button className='create-btn' type='submit'>
+                <button className='create-btn' type='submit' disabled={uploadInProgress}>
                         Submit
                 </button>
 

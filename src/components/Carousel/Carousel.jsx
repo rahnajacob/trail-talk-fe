@@ -17,14 +17,14 @@ const Carousel = ({images}) => {
 
     console.log("images carousel", images)
     const displayImages = images.map((image, i) => (
-        <img src={image.img} alt={image.description} key={i} />
+        <img src={image} alt="hhhhhhh" key={i} />
     ))
     return (
         <section className="styles.slickslider">
             <Slider {...settings}>
                 {displayImages}
             </Slider>
-            <button>btn</button>
+            
         </section>
     );
 }
