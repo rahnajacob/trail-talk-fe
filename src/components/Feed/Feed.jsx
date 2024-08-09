@@ -8,7 +8,7 @@ const Feed = ({ posts }) => {
     const [allPosts, setAllPosts] = useState(posts || []);
     const [page, setPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
-
+ 
     useEffect(() => {
         if (posts.length > 0) setAllPosts(posts);
     }, [posts]);
