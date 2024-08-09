@@ -66,11 +66,12 @@ const App = () => {
     navigate('/posts')
   }
 
-  const handleAddComment = async (commentData) => {
-    const newComment = await postService.createComment(commentData)
-    setPosts({...posts, comments: [...posts.comments, newComment]})
-    navigate('/posts')
-  }
+  // Commented out as this was written for future functionality that was not implemented yet
+  // const handleAddComment = async (commentData) => {
+  //   const newComment = await postService.createComment(commentData)
+  //   setPosts({...posts, comments: [...posts.comments, newComment]})
+  //   navigate('/posts')
+  // }
 
   useEffect(() => {
     const fetchMyPosts = async () => {
