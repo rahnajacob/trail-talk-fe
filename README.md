@@ -6,8 +6,8 @@ Rahna and Yousef. We completed this project together splitting responsibility du
 
 ## Deployed Links
 
-Rahna - ![Rahna’s Project](https://trailtalk.netlify.app)
-Yousef - ![Yousefs’s Project](https://trail-talkfe.netlify.app)
+- Rahna - ![Rahna’s Project](https://trailtalk.netlify.app)
+- Yousef - ![Yousefs’s Project](https://trail-talkfe.netlify.app)
 
 ## Project Overview
 We were tasked to complete this project using the MERN stack in a week. The technologies of MERN are MongoDB, Express, React and Node. We aimed to create a single-page application(SPA) that would support user creation and authentication and have full CRUD capabilities. We were responsible for building two code bases, the Front-End which users would interact with and the Back-End API.
@@ -15,15 +15,15 @@ We were tasked to complete this project using the MERN stack in a week. The tech
 ## Project Planning
 ![Planning Link](https://trello.com/b/SZoZx2rv/ga-seb81-project-3)
 
-Day -1 & -2 (Weekend)
+- Day -1 & -2 (Weekend)
     - Paired to complete the back-end API
-Day 1 (Monday)
+- Day 1 (Monday)
     - Built out the Auth Services and the general data retrieval Services
-Day 2 (Tuesday)
+- Day 2 (Tuesday)
     - Built the log-in/sign-up, log-out, nav bar, feed and infinite scroll components
-Day 3 (Wednesday)
+- Day 3 (Wednesday)
     - Built the Create post, right nav, image carousel, show post and search (non-functioning) components and started styling
-Day 4 (Thursday)
+- Day 4 (Thursday)
     - Focused on styling and fixing bugs
 
 
