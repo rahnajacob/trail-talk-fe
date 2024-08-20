@@ -6,14 +6,14 @@ Rahna and Yousef. We completed this project together splitting responsibility du
 
 ## Deployed Links
 
-- Rahna - ![Rahna’s Project](https://trailtalk.netlify.app)
-- Yousef - ![Yousefs’s Project](https://trail-talkfe.netlify.app)
+- Rahna - https://trailtalk.netlify.app
+- Yousef - https://trail-talkfe.netlify.app
 
 ## Project Overview
 We were tasked to complete this project using the MERN stack in a week. The technologies of MERN are MongoDB, Express, React and Node. We aimed to create a single-page application(SPA) that would support user creation and authentication and have full CRUD capabilities. We were responsible for building two code bases, the Front-End which users would interact with and the Back-End API.
 
 ## Project Planning
-![Planning Link](https://trello.com/b/SZoZx2rv/ga-seb81-project-3)
+Planning Link - https://trello.com/b/SZoZx2rv/ga-seb81-project-3
 
 - Day -1 & -2 (Weekend)
     - Paired to complete the back-end API
